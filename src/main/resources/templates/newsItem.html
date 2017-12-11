@@ -29,7 +29,7 @@
                 </form>
             </div>
             <form method="POST" th:action="@{/categories/{newsItemId}(newsItemId=${newsItem.id})}">
-                <input type="text" name="name"/>
+                <input type="text" name="name" placeholder="Category"/>
                 <input type="submit" value="Add new Category"/>
             </form>
             <form th:action="@{/newsItems/{newsItemId}(newsItemId=${newsItem.id})}" th:method="DELETE">

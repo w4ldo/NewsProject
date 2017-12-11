@@ -91,6 +91,7 @@ public class NewsItemController {
             categoryRepository.save(category);
         }
 
+        fileObjectRepository.delete(newsItem.getFileObject());
         newsItemRepository.delete(newsItem);
 
         return "redirect:/newsItems";
