@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8" />
+        <title th:text='${newsItem.headline}'>title</title>
+    </head>
+    <body>
+        <nav>
+            <a th:href="@{/newsItems}">All news</a>
+        </nav>
+
+        <div th:if="${not #lists.isEmpty(categories)}">
+
+            <h2>Assign to category</h2>
+
+            <form method="POST" th:action="@{/newsItems/{newsItemId}/categories(newsItemId=${newsItem.id})}">
+                <select name="categoryId">
+                    <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}">category</option>
+                </select>
+                <input type="submit" value="Assign" id="add-to-category"/>
+            </form>
+        </div>
+
+        <h2 th:text="${newsItem.headline} + ' ' + ${newsItem.posted}">headline</h2>
+
+        <div th:if="${newsItem.fileObject != null}">
+            <img alt="Image" th:src="@{/newsItems/{newsItemId}/content(newsItemId=${newsItem.id})}" style="width:250px;height:100px;"/>
+        </div>
+
+        <h4>
+            <span th:text="${newsItem.lead}">lead</span>
+        </h4>
+
+        <p><span th:text="${newsItem.text}">text</span></p>
+
+        <div>
+            <ul>
+                <li th:each="category : ${newsItem.categories}" th:text="${category.name}"></li>
+            </ul>
+        </div>
+
+    </body>
+
+</html>

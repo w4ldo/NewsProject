@@ -1,0 +1,8 @@
+language: java
+deploy:
+  provider: heroku
+  api_key:
+    secure: 332cfd7b-8a63-4205-b9e9-8b1e38bd4426
+  app: new-alive
+notifications:
+  email: false

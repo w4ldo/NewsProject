@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>NewsProject</title>
+    </head>
+    <body>
+
+        <nav>
+            <a th:href="@{/newsItems}">All news</a>
+            <span th:each="category : ${categories}">
+                <a th:href="@{/categories/{id}(id=${category.id})}">
+                    <span th:text="${category.name}">category</span>
+                </a>
+            </span>
+        </nav>
+
+        <h3>
+            Post news
+        </h3>
+
+        <form method="POST" th:action="@{/test}">
+            <input type="submit" value="Test"/>
+        </form>
+
+        <form method="POST" th:action="@{/newsItems}" enctype="multipart/form-data">
+            <input type="text" name="headline"/>
+            <input type="text" name="lead"/>
+            <input type="text" name="text"/>
+            <input type="date" name="posted" id="theDate"></input>
+            <input type="file" name="file"/>
+            <input type="submit" value="Add"/>
+        </form>
+
+        <h2>All News</h2>
+
+        <div>
+            <ul>
+                <li th:each="newsItem : ${newsItems}">
+                    <a th:href="@{/newsItems/{id}(id=${newsItem.id})}">
+                        <span th:text="${newsItem.headline + ' ' + newsItem.posted}">headline and date</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+        <script>
+            var date = new Date();
+
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+
+            if (month < 10)
+                month = "0" + month;
+            if (day < 10)
+                day = "0" + day;
+
+            var today = year + "-" + month + "-" + day;
+            document.getElementById("theDate").value = today;
+        </script>
+    </body>
+
+</html>
