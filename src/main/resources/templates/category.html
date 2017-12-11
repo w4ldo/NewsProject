@@ -20,9 +20,11 @@
             <h3>
                 Post news
             </h3>
+
             <form method="POST" th:action="@{/test}">
                 <input type="submit" value="Test"/>
             </form>
+
             <form method="POST" th:action="@{/newsItems}" enctype="multipart/form-data">
                 <input type="text" name="headline"/>
                 <input type="text" name="lead"/>
@@ -32,18 +34,17 @@
                 <input type="submit" value="Add"/>
             </form>
         </div>
-            <h2>All News</h2>
+        <h2><span th:text="${currentCategory.name}"></span></h2>
 
-            <div>
-                <ul>
-                    <li th:each="newsItem : ${newsItems}">
-                        <a th:href="@{/newsItems/{id}(id=${newsItem.id})}">
-                            <span th:text="${newsItem.headline + ' ' + newsItem.posted}">headline and date</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
+        <div>
+            <ul>
+                <li th:each="newsItem : ${newsItems}">
+                    <a th:href="@{/newsItems/{id}(id=${newsItem.id})}">
+                        <span th:text="${newsItem.headline + ' ' + newsItem.posted}">headline and date</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
 
         <script>
             var date = new Date();

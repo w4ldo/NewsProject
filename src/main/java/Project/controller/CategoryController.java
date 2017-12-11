@@ -24,7 +24,8 @@ public class CategoryController {
         Category category = categoryRepository.getOne(categoryId);
         model.addAttribute("newsItems", newsItemRepository.findByCategoriesContaining(category));
         model.addAttribute("categories", categoryRepository.findAll());
-        return "newsItems";
+        model.addAttribute("currentCategory", category);
+        return "category";
     }
 
     @PostMapping("/categories/{newsItemId}")
