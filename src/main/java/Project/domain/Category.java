@@ -29,4 +29,8 @@ public class Category extends AbstractPersistable<Long> {
         this.newsItems.add(news);
     }
 
+    public void deleteFromCategory(NewsItem newsItem) {
+        this.newsItems.remove(newsItem);
+    }
+
 }

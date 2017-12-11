@@ -7,7 +7,7 @@
     </head>
     <body>
         <nav>
-            <a th:href="@{/newsItems}">All news</a>
+            <a th:href="@{/newsItems}">Back to news</a>
         </nav>
 
         <div th:if="${not #lists.isEmpty(categories)}">
@@ -24,6 +24,9 @@
         <form method="POST" th:action="@{/categories/{newsItemId}(newsItemId=${newsItem.id})}">
             <input type="text" name="name"/>
             <input type="submit" value="Add new Category"/>
+        </form>
+        <form th:action="@{/newsItems/{newsItemId}(newsItemId=${newsItem.id})}" th:method="DELETE">
+            <input type="submit" value="Remove this post"/>
         </form>
 
 

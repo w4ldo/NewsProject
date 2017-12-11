@@ -8,10 +8,12 @@ import Project.repository.FileObjectRepository;
 import Project.repository.NewsItemRepository;
 import java.io.IOException;
 import java.time.LocalDate;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -80,6 +82,20 @@ public class NewsItemController {
         return "newsItem";
     }
 
+    @DeleteMapping("/newsItems/{newsItemId}")
+    @Transactional
+    public String delete(Model model, @PathVariable Long newsItemId) {
+        NewsItem newsItem = newsItemRepository.getOne(newsItemId);
+        for (Category category : newsItem.getCategories()) {
+            category.deleteFromCategory(newsItem);
+            categoryRepository.save(category);
+        }
+
+        newsItemRepository.delete(newsItem);
+
+        return "redirect:/newsItems";
+    }
+
     @PostMapping("/newsItems/{newsItemId}/categories")
     public String assignCategory(Model model, @PathVariable Long newsItemId, @RequestParam Long categoryId) {
         NewsItem news = newsItemRepository.getOne(newsItemId);
@@ -99,21 +115,21 @@ public class NewsItemController {
         category2.setName("politics");
         categoryRepository.save(category1);
         categoryRepository.save(category2);
-        
+
         NewsItem newsItem = new NewsItem();
         newsItem.setHeadline("Top 10 great tricks for working outside");
         newsItem.setLead("We tried to following with great results");
         newsItem.setText("One would never have thought who well....textexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextext... and so on");
         newsItem.setPosted(LocalDate.now());
         newsItemRepository.save(newsItem);
-        
+
         NewsItem newsItem2 = new NewsItem();
         newsItem2.setHeadline("You wont BELIEVE what just happened here");
         newsItem2.setLead("Lead text vanished in thin air");
         newsItem2.setText("It's amazing! I simply can't....textexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextext...and then some");
         newsItem2.setPosted(LocalDate.now());
         newsItemRepository.save(newsItem2);
-        
+
         return "redirect:/newsItems";
     }
 
