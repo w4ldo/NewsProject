@@ -108,30 +108,30 @@ public class NewsItemController {
         return "redirect:/newsItems/{newsItemId}";
     }
 
-    @PostMapping("/test")
-    public String test() {
-        Category category1 = new Category();
-        category1.setName("crime");
-        Category category2 = new Category();
-        category2.setName("politics");
-        categoryRepository.save(category1);
-        categoryRepository.save(category2);
-
-        NewsItem newsItem = new NewsItem();
-        newsItem.setHeadline("Top 10 great tricks for working outside");
-        newsItem.setLead("We tried to following with great results");
-        newsItem.setText("One would never have thought who well....textexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextext... and so on");
-        newsItem.setPosted(LocalDate.now());
-        newsItemRepository.save(newsItem);
-
-        NewsItem newsItem2 = new NewsItem();
-        newsItem2.setHeadline("You wont BELIEVE what just happened here");
-        newsItem2.setLead("Lead text vanished in thin air");
-        newsItem2.setText("It's amazing! I simply can't....textexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextext...and then some");
-        newsItem2.setPosted(LocalDate.now());
-        newsItemRepository.save(newsItem2);
-
-        return "redirect:/newsItems";
-    }
+//    @PostMapping("/test")
+//    public String test() {
+//        Category category1 = new Category();
+//        category1.setName("crime");
+//        Category category2 = new Category();
+//        category2.setName("politics");
+//        categoryRepository.save(category1);
+//        categoryRepository.save(category2);
+//
+//        NewsItem newsItem = new NewsItem();
+//        newsItem.setHeadline("Top 10 great tricks for working outside");
+//        newsItem.setLead("We tried to following with great results");
+//        newsItem.setText("One would never have thought who well....textexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextext... and so on");
+//        newsItem.setPosted(LocalDate.now());
+//        newsItemRepository.save(newsItem);
+//
+//        NewsItem newsItem2 = new NewsItem();
+//        newsItem2.setHeadline("You wont BELIEVE what just happened here");
+//        newsItem2.setLead("Lead text vanished in thin air");
+//        newsItem2.setText("It's amazing! I simply can't....textexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextexttextext...and then some");
+//        newsItem2.setPosted(LocalDate.now());
+//        newsItemRepository.save(newsItem2);
+//
+//        return "redirect:/newsItems";
+//    }
 
 }
