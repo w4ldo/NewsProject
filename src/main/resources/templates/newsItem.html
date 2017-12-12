@@ -15,8 +15,8 @@
             </span>
             <a th:href="@{/login}">Login</a>
             <a th:href="@{/logout}">Logout</a>
-        </nav><!--
--->        <div sec:authorize="hasRole('ADMIN')">
+        </nav>
+        <div sec:authorize="hasRole('ADMIN')">
             <div th:if="${not #lists.isEmpty(categories)}">
 
                 <h2>Assign to category</h2>
@@ -27,7 +27,7 @@
                     </select>
                     <input type="submit" value="Assign" id="add-to-category"/>
                 </form>
-            </div><!--
+            </div>
             <form method="POST" th:action="@{/categories/{newsItemId}(newsItemId=${newsItem.id})}">
                 <input type="text" name="name" placeholder="Category"/>
                 <input type="submit" value="Add new Category"/>
@@ -36,7 +36,7 @@
                 <input type="submit" value="Remove this post"/>
             </form>
         </div>
-        <h2 th:text="${newsItem.headline} + ' ' + ${newsItem.posted}">headline</h2>
+<!--        <h2 th:text="${newsItem.headline} + ' ' + ${newsItem.posted}">headline</h2>
 
         <div th:if="${newsItem.fileObject != null}">
             <img alt="Image" th:src="@{/newsItems/{newsItemId}/content(newsItemId=${newsItem.id})}" style="width:320px;height:240px;"/>
