@@ -21,6 +21,11 @@ Kirjautumiseen yläpitäjänä käytetään tunnusta "admin" ja salasanaa "admin
 ## To-do
 
 Sovellukseen jäi huomattavasti kehitettävää
+
+### Uutisten yksikkönäkymä on rikki herokussa, toimii paikallisesti enkä saa millään toimimaan tuotannossa
+
+(Exception evaluating SpringEL expression)
+
 * kirjoittaja-luokka/attribuutti
 * listaukset katselukertojen mukaan, top 5 viimeistä etc.
 * db-autentikointi
