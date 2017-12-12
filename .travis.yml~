@@ -2,7 +2,7 @@ language: java
 deploy:
   provider: heroku
   api_key:
-    secure: da05675c-e520-446d-8a18-97d28928a5c8
+    secure: 332cfd7b-8a63-4205-b9e9-8b1e38bd4426
   app: news-project-app
 notifications:
   email: false
