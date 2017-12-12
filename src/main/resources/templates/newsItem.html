@@ -36,9 +36,10 @@
                 <input type="submit" value="Remove this post"/>
             </form>
         </div>
-        <h2 th:text="${item.headline} + ' ' + ${item.posted}">headline</h2>
-
-        <div th:if="${item.fileObject != null}">
+        <div th:each="item : ${items}">
+            <h2 th:text="${item.headline} + ' ' + ${item.posted}">headline</h2>
+        </div>
+<!--        <div th:if="${item.fileObject != null}">
             <img alt="Image" th:src="@{/newsItems/{itemId}/content(itemId=${item.id})}" style="width:320px;height:240px;"/>
         </div>
 
@@ -50,7 +51,7 @@
         <div>
             <span>Categories: </span>
             <span th:each="category : ${item.categories}" th:text="${category.name + ' '}"></span>
-        </div>
+        </div>-->
     </body>
 
 </html>

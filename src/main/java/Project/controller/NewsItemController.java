@@ -8,6 +8,9 @@ import Project.repository.FileObjectRepository;
 import Project.repository.NewsItemRepository;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -77,7 +80,9 @@ public class NewsItemController {
 
     @GetMapping("/newsItems/{newsItemId}")
     public String newsItem(Model model, @PathVariable Long newsItemId) {
-        model.addAttribute("item", newsItemRepository.getOne(newsItemId));
+        List<NewsItem> items = new ArrayList<>();
+        items.add(newsItemRepository.getOne(newsItemId));
+        model.addAttribute("items", items);
         model.addAttribute("categories", categoryRepository.findAll());
         return "newsItem";
     }
@@ -133,5 +138,4 @@ public class NewsItemController {
 //
 //        return "redirect:/newsItems";
 //    }
-
 }
