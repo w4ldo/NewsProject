@@ -28,7 +28,7 @@ public class CategoryController {
         return "category";
     }
 
-    @PostMapping("/categories/{newsItemId}")
+    @PostMapping("/categories")
     public String create(@PathVariable Long newsItemId, @RequestParam String name) {
 
         Category category = new Category();

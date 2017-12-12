@@ -28,7 +28,7 @@
                     <input type="submit" value="Assign" id="add-to-category"/>
                 </form>
             </div>
-            <form method="POST" th:action="@{/categories/{newsItemId}(newsItemId=${newsItem.id})}">
+            <form method="POST" th:action="@{/categories}">
                 <input type="text" name="name" placeholder="Category"/>
                 <input type="submit" value="Add new Category"/>
             </form>
