@@ -15,8 +15,8 @@
             </span>
             <a th:href="@{/login}">Login</a>
             <a th:href="@{/logout}">Logout</a>
-        </nav>
-        <div sec:authorize="hasRole('ADMIN')">
+        </nav><!--
+-->        <div sec:authorize="hasRole('ADMIN')">
             <div th:if="${not #lists.isEmpty(categories)}">
 
                 <h2>Assign to category</h2>
@@ -27,7 +27,7 @@
                     </select>
                     <input type="submit" value="Assign" id="add-to-category"/>
                 </form>
-            </div>
+            </div><!--
             <form method="POST" th:action="@{/categories/{newsItemId}(newsItemId=${newsItem.id})}">
                 <input type="text" name="name" placeholder="Category"/>
                 <input type="submit" value="Add new Category"/>
@@ -50,7 +50,7 @@
         <div>
             <span>Categories: </span>
             <span th:each="category : ${newsItem.categories}" th:text="${category.name + ' '}"></span>
-        </div>
+        </div>-->
     </body>
 
 </html>
