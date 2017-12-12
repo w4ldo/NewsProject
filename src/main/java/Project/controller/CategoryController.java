@@ -29,13 +29,13 @@ public class CategoryController {
     }
 
     @PostMapping("/categories")
-    public String create(@PathVariable Long newsItemId, @RequestParam String name) {
+    public String create(@RequestParam String name) {
 
         Category category = new Category();
         category.setName(name);
         categoryRepository.save(category);
 
-        return "redirect:/newsItems/{newsItemId}";
+        return "redirect:/newsItems";
     }
 
 }

@@ -17,12 +17,16 @@
             <a th:href="@{/logout}">Logout</a>
         </nav>
         <div sec:authorize="hasRole('ADMIN')">
+            <form method="POST" th:action="@{/categories}">
+                <input type="text" name="name" placeholder="Category"/>
+                <input type="submit" value="Add new Category"/>
+            </form>
             <h3>
                 Post news
             </h3>
-<!--            <form method="POST" th:action="@{/test}">
-                <input type="submit" value="Test"/>
-            </form>-->
+            <!--            <form method="POST" th:action="@{/test}">
+                            <input type="submit" value="Test"/>
+                        </form>-->
             <form method="POST" th:action="@{/newsItems}" enctype="multipart/form-data">
                 <input type="text" name="headline" placeholder="headline"/>
                 <input type="text" name="lead" placeholder="lead"/>
@@ -32,17 +36,17 @@
                 <input type="submit" value="Add"/>
             </form>
         </div>
-            <h2>All News</h2>
+        <h2>All News</h2>
 
-            <div>
-                <ul>
-                    <li th:each="newsItem : ${newsItems}">
-                        <a th:href="@{/newsItems/{id}(id=${newsItem.id})}">
-                            <span th:text="${newsItem.headline + ' ' + newsItem.posted}">headline and date</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+        <div>
+            <ul>
+                <li th:each="newsItem : ${newsItems}">
+                    <a th:href="@{/newsItems/{id}(id=${newsItem.id})}">
+                        <span th:text="${newsItem.headline + ' ' + newsItem.posted}">headline and date</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
 
 
         <script>
