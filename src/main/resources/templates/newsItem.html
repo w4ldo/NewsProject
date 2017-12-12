@@ -21,36 +21,36 @@
 
                 <h2>Assign to category</h2>
 
-                <form method="POST" th:action="@{/newsItems/{newsItemId}/categories(newsItemId=${newsItem.id})}">
+                <form method="POST" th:action="@{/newsItems/{itemId}/categories(itemId=${item.id})}">
                     <select name="categoryId">
                         <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}">category</option>
                     </select>
                     <input type="submit" value="Assign" id="add-to-category"/>
                 </form>
             </div>
-            <form method="POST" th:action="@{/categories/{newsItemId}(newsItemId=${newsItem.id})}">
+            <form method="POST" th:action="@{/categories/{itemId}(itemId=${item.id})}">
                 <input type="text" name="name" placeholder="Category"/>
                 <input type="submit" value="Add new Category"/>
             </form>
-            <form th:action="@{/newsItems/{newsItemId}(newsItemId=${newsItem.id})}" th:method="DELETE">
+            <form th:action="@{/newsItems/{itemId}(itemId=${item.id})}" th:method="DELETE">
                 <input type="submit" value="Remove this post"/>
             </form>
         </div>
-<!--        <h2 th:text="${newsItem.headline} + ' ' + ${newsItem.posted}">headline</h2>
+        <h2 th:text="${item.headline} + ' ' + ${item.posted}">headline</h2>
 
-        <div th:if="${newsItem.fileObject != null}">
-            <img alt="Image" th:src="@{/newsItems/{newsItemId}/content(newsItemId=${newsItem.id})}" style="width:320px;height:240px;"/>
+        <div th:if="${item.fileObject != null}">
+            <img alt="Image" th:src="@{/newsItems/{itemId}/content(itemId=${item.id})}" style="width:320px;height:240px;"/>
         </div>
 
         <h4>
-            <span th:text="${newsItem.lead}">lead</span>
+            <span th:text="${item.lead}">lead</span>
         </h4>
 
-        <p><span th:text="${newsItem.text}">text</span></p>
+        <p><span th:text="${item.text}">text</span></p>
         <div>
             <span>Categories: </span>
-            <span th:each="category : ${newsItem.categories}" th:text="${category.name + ' '}"></span>
-        </div>-->
+            <span th:each="category : ${item.categories}" th:text="${category.name + ' '}"></span>
+        </div>
     </body>
 
 </html>

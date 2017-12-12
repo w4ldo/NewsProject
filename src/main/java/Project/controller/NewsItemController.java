@@ -77,7 +77,7 @@ public class NewsItemController {
 
     @GetMapping("/newsItems/{newsItemId}")
     public String newsItem(Model model, @PathVariable Long newsItemId) {
-        model.addAttribute("newsItem", newsItemRepository.getOne(newsItemId));
+        model.addAttribute("item", newsItemRepository.getOne(newsItemId));
         model.addAttribute("categories", categoryRepository.findAll());
         return "newsItem";
     }
